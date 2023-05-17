@@ -75,7 +75,7 @@ export default function Present() {
       Attendance
       </div>
       <form action="" className='searchContainer' onSubmit={handleSearch}>
-      <input onChange={e=>setClassName(e.target.value)} required type="text" placeholder='class name'/>
+      <input onChange={e=>setClassName(e.target.value)} required type="number" placeholder='class'/>
       <input onChange={e=>setGroup(e.target.value)} type="text" placeholder='group'/>
       <input required onChange={e=>setDate(e.target.value)} type="date" placeholder='group'/>
       {/* {searched.length && <div> Delete All</div>} */}

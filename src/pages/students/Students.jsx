@@ -261,7 +261,7 @@ export default function Students() {
 
         </div>
         <form className='searchContainer' onSubmit={handleSearch}>
-            <input onChange={e=>setClassName(e.target.value)} required type="text" placeholder='class name'/>
+            <input onChange={e=>setClassName(e.target.value)} required type="number" placeholder='class'/>
             <input onChange={e=>setGroup(e.target.value)} type="text" placeholder='group'/>
             <input onChange={e=>setRoll(e.target.value)} type="text" placeholder='roll'/>
             <input onChange={e=>setphone(e.target.value)} type="text" placeholder='phone'/>

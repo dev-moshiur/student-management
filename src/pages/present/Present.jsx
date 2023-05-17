@@ -111,7 +111,7 @@ export default function Present() {
         Name Present
       </div>
       <form action="" className='searchContainer' onSubmit={handleSearch}>
-      <input onChange={e=>setClassName(e.target.value)} required type="text" placeholder='class name'/>
+      <input onChange={e=>setClassName(e.target.value)} required type="number" placeholder='class'/>
       <input onChange={e=>setGroup(e.target.value)} type="text" placeholder='group'/>
         {/* <input type="text" name="date" placeholder='Date [dd-mm-yyyy]' id="" /> */}
         <input type="submit" value="search" className='btn' />
