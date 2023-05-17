@@ -12,7 +12,7 @@ import Delete from '../../components/delete/Deletes'
 import Update from '../../components/update/Updatee'
 import {Link} from 'react-router-dom'
 
-export default function Students() {
+export default function Students({searched, setSearched}) {
     const [loading, setLoading] = useState(false)
     const [showMessage, setShowMessage] = useState('')
     const [showCreateForm, setShowCreateForm] = useState(false)
@@ -20,12 +20,12 @@ export default function Students() {
     const [group, setGroup] = useState()
     const [roll, setRoll] = useState()
     const [phone, setphone] = useState()
-    const [searched, setSearched] = useState([])
+    
     const [deleteid, setDeleteid] = useState()
     const [updateId, setUpdateId] = useState()
     const [showDeletePopup, setShowDeletePopup] = useState(false)
-  const [showUpdateForm, setShowUpdateForm] = useState(false)  
-  const [updateFields, setUpdateFields] = useState([])
+    const [showUpdateForm, setShowUpdateForm] = useState(false)  
+    const [updateFields, setUpdateFields] = useState([])
 
 
     const activeUpdate=(id)=>{
