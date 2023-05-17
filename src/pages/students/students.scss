@@ -1,0 +1,109 @@
+
+.students{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        .tableHeader,.row{
+            width: 100%;
+            display: flex;
+            column-gap: 12px;
+            
+            
+                
+           
+            
+
+        }
+        .stus{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            max-height: calc(100vh - 200px);
+            overflow: scroll;
+            .row{
+                border: 1px solid #ddd;
+                border-radius: 2px;
+                padding: 8px;
+                display: flex;
+                align-items: center;
+                .top{
+                    flex: 1;
+                    display: flex;
+                    column-gap: 10px;
+                    div{
+                        .dn{
+                            display: none;
+                        }
+                        
+                    }
+    
+                    @media (max-width:750px) {
+                    flex-direction: column;
+                    row-gap: 8px;
+                    
+                    }
+                    
+    
+                }
+             
+                .actions{
+                    display: flex;
+                    align-items: center;
+                    column-gap: 12px;
+                    .red{
+                        color: red;
+                    }
+                    
+                }
+                @media (max-width:750px) {
+                    flex-direction: column-reverse;
+                    align-items: flex-start;
+                    row-gap: 8px;
+                    padding: 0;
+                    .top{
+                        padding: 12px;
+                        div{
+                            display: flex;
+                            align-items: center;
+                            column-gap: 10px;
+                            span{
+                                &:first-child{
+                                    width: 80px;
+                                }
+                                &:last-child{
+                                    flex: 1;
+                                }
+                            }
+
+                     
+                        .dn{
+                            display: block;
+                        }  
+                     }
+                    }
+    
+                    .actions{
+                        padding: 5px 12px;
+                        width: 100%;
+                        align-items: center;
+                        column-gap: 16px;
+                        background-color: #eee;
+                    }
+                    
+                    }
+
+            }
+
+        }
+
+    }
+}

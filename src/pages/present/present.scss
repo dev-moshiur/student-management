@@ -1,0 +1,50 @@
+
+
+
+.present{
+    width: 100%;
+    padding: 13px;
+    .container{
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(340px,1fr));
+        row-gap: 12px;
+        column-gap: 10px;
+        margin-bottom: 20px;
+        .item{
+            padding: 8px;
+            border: 1px solid #aaa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .intro{
+                display: flex;
+                align-items: center;
+                column-gap: 12px;
+                span{
+                    &:first-child{
+                        background: var(--light-color);
+                        padding: 3px 5px;
+                    }
+                }
+            }
+            .check{
+                width: 20px;
+                height: 20px;
+                border: 1px solid #333;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &>*{
+                    color: green;
+                }
+            }
+        }
+    }
+    .already{
+        width: fit-content;
+        margin: 20px auto;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}

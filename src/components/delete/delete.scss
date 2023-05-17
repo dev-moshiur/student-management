@@ -1,0 +1,46 @@
+.deleteComponent {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  align-items: center;
+  background-color: rgba($color: #111, $alpha: 0.8);
+  .container {
+    width: 90%;
+    max-width: 400px;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+
+    .messageContainer {
+      font-weight: 500;
+      font-size: 18px;
+    }
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      column-gap: 5px;
+      & > * {
+        padding: 4px 10px;
+        border-radius: 2px;
+        transition: 0.2s;
+        cursor: pointer;
+        &:hover {
+          background-color: #f2f3f4;
+        }
+      }
+      .cancel {
+      }
+      .delete {
+        color: red;
+      }
+    }
+  }
+}

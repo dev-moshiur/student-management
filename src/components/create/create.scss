@@ -1,0 +1,103 @@
+.createComponent {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 70px);
+  // z-index: ;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($color: #000000, $alpha: 0.9);
+  .wrapper {
+    width: 94%;
+    background-color: #fff;
+    height: 90%;
+    margin: auto;
+    border-radius: 2.4px;
+    max-width: 650px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    overflow: scroll;
+
+    .heading {
+      width: fit-content;
+      font-size: 22px;
+      font-weight: 500;
+      margin: 0 auto;
+      // text-transform: capitalize;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+      margin: 0 auto;
+    
+
+      .row {
+        display: flex;
+        column-gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        label {
+          font-size: 15px;
+          font-weight: 500;
+        }
+        input ,textarea{
+          max-width: 400px;
+          outline: none;
+          border: 1px solid #999;
+          padding: 3px 5px;
+          width: 100%;
+          font-size: 17px;
+          min-width: 250px;
+          border-radius: 2px;
+        }
+        textarea{
+          height: 150px;
+        }
+      }
+      @media (max-width: 575px) {
+        .row {
+          flex-direction: column;
+          row-gap: 6px;
+          align-items: flex-start;
+        }
+      }
+    }
+    .submit {
+      width: fit-content;
+      margin: 0 auto;
+      cursor: pointer;
+      padding: 0;
+      input {
+        outline: none;
+        border: 1px solid #999;
+        padding: 3px 5px;
+        font-size: 17px;
+        margin: 0 !important;
+
+        border-radius: 2px;
+        &.m {
+          margin-top: 0px;
+          margin-bottom: 0px !important ;
+        }
+      }
+    }
+  }
+  .clear {
+    position: absolute;
+    top: 2px;
+    right: 20px;
+    cursor: pointer;
+    & > * {
+      font-size: 30px;
+      color: #fff;
+    }
+  }
+}
