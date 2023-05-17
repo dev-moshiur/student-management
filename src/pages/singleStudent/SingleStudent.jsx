@@ -11,7 +11,7 @@ export default function SingleStudent() {
     useEffect(() => {
       fetch(`https://student-management-api.vercel.app/present/?studentId=${search.split('=')[1]}`)
       .then(res=>res.json())
-      .then(d=>{setData(d);console.log(d)})
+      .then(d=>{setData(d.reverse());console.log(d)})
       
     }, [])
     
