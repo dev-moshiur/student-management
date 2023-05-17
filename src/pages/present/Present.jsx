@@ -146,7 +146,8 @@ export default function Present() {
 
       </div>  }
       {chekPreent &&  <div className='already'>Already Presented today</div>}
-      <div className="btn" aria-disabled onClick={handlePost}>Submit</div>
+      {searched.length>0 ?
+      <div className="btn" aria-disabled onClick={handlePost}>Submit</div> :'' }
 
     </div>
     {loading && <PopUpLoading/>}
