@@ -9,6 +9,7 @@ import SingleStudent from './pages/singleStudent/SingleStudent'
 import { Route, Routes } from "react-router-dom";
 function App() {
   const [searched, setSearched] = useState([])
+  const [group, setGroup] = useState()
   return (
     <div className="app">
       <TopBar/>
@@ -19,7 +20,7 @@ function App() {
       <Routes>
           <Route path="/">
             <Route index element={<Present />} />
-            <Route path="students" element={<Students searched={searched} setSearched={setSearched}/>} />
+            <Route path="students" element={<Students group={group} setGroup={setGroup} searched={searched} setSearched={setSearched}/>} />
             <Route path="attendance" element={<Attendance />} />
             {/* {/* <Route path="contact" element={<Contact />} /> */}
             <Route path="single-student" element={<SingleStudent />} />

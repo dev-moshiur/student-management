@@ -12,12 +12,12 @@ import Delete from '../../components/delete/Deletes'
 import Update from '../../components/update/Updatee'
 import {Link} from 'react-router-dom'
 
-export default function Students({searched, setSearched}) {
+export default function Students({searched, setSearched,group, setGroup}) {
     const [loading, setLoading] = useState(false)
     const [showMessage, setShowMessage] = useState('')
     const [showCreateForm, setShowCreateForm] = useState(false)
     const [className, setClassName] = useState()
-    const [group, setGroup] = useState()
+  
     const [roll, setRoll] = useState()
     const [phone, setphone] = useState()
     
@@ -262,7 +262,7 @@ export default function Students({searched, setSearched}) {
         </div>
         <form className='searchContainer' onSubmit={handleSearch}>
             <input defaultValue={searched.length>0 ? searched[0].className : ''} onChange={e=>setClassName(e.target.value)} required type="number" placeholder='class'/>
-            <input onChange={e=>setGroup(e.target.value)} type="text" placeholder='group'/>
+            <input defaultValue={group} onChange={e=>setGroup(e.target.value)} type="text" placeholder='group'/>
             <input onChange={e=>setRoll(e.target.value)} type="text" placeholder='roll'/>
             <input onChange={e=>setphone(e.target.value)} type="text" placeholder='phone'/>
             <input type="submit" className='btn' value={'Search'}/>
