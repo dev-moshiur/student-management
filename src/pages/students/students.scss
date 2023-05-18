@@ -59,6 +59,11 @@
                     display: flex;
                     align-items: center;
                     column-gap: 12px;
+                    &>*{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
                     .red{
                         color: red;
                     }
