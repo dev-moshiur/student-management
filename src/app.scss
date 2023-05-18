@@ -4,6 +4,7 @@
     width: 100%;
     .pages{
         margin-top: 70px;
+        min-height: calc(100vh - 187px);
     }
     .header{
         width: fit-content;

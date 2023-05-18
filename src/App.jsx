@@ -6,6 +6,7 @@ import TopBar from './components/topbar/Top'
 import Present from './pages/present/Present'
 import Attendance from './pages/attendance/Attendance'
 import SingleStudent from './pages/singleStudent/SingleStudent'
+import Footer from './components/footer/Footer'
 import { Route, Routes } from "react-router-dom";
 function App() {
   const [searched, setSearched] = useState([])
@@ -29,6 +30,7 @@ function App() {
         </Routes>
         
       </div>
+      <Footer/>
       
     
     </div>
