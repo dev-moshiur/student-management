@@ -17,6 +17,13 @@ export default function Present() {
     const [searched, setSearched] = useState([])
     const [date, setDate] = useState()
     const [showDeletePopup, setShowDeletePopup] = useState(false)
+    const [datalists, setDatalists] = useState({})
+
+    useEffect(() => {
+      fetch('http://localhost:8002/getDatalists')
+      .then(res=>res.json())
+      .then(data=>setDatalists(data))
+    }, [])
 
     const handleSearch =(e)=>{
       if (e) {
@@ -31,7 +38,7 @@ export default function Present() {
         }
         fetchquery+=`&date=${new Date(date).toDateString()}`
 
-        fetch(`https://student-management-api.vercel.app/present/?${fetchquery}`)
+        fetch(`http://localhost:8002/present/?${fetchquery}`)
         .then(res=>res.json())
         .then(data=>{
           setSearched(data.reverse());
@@ -42,7 +49,7 @@ export default function Present() {
     const handleDelete = ()=>{
         setLoading(true)
 
-        fetch(`https://student-management-api.vercel.app/present`, {
+        fetch(`http://localhost:8002/present`, {
             headers:{Authorization : localStorage.getItem('tttt'),"Content-Type": "application/json" },
             method: "delete",
             body:JSON.stringify(searched.map(elm=>elm._id))
@@ -74,9 +81,16 @@ export default function Present() {
       <div className="header">
       Attendance
       </div>
+      <div className="example">
+        For testing search with <strong>class : 10</strong>  and <strong>group : science</strong>
+      </div>
       <form action="" className='searchContainer' onSubmit={handleSearch}>
       <input onChange={e=>setClassName(e.target.value)} required type="number" placeholder='class'/>
-      <input onChange={e=>setGroup(e.target.value)} type="text" placeholder='group'/>
+      <input list='group' defaultValue={group} onChange={e=>setGroup(e.target.value)} type="text" placeholder='group'/>
+              <datalist id='group'>
+                {datalists.groups?.map(elm=><option value={elm}>{elm}</option>)}
+
+              </datalist>
       <input required onChange={e=>setDate(e.target.value)} type="date" placeholder='group'/>
       {/* {searched.length && <div> Delete All</div>} */}
         {/* <input type="text" name="date" placeholder='Date [dd-mm-yyyy]' id="" /> */}

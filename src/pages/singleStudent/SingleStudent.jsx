@@ -9,7 +9,7 @@ export default function SingleStudent() {
     const {search} = useLocation();
     const [data, setData] = useState([])
     useEffect(() => {
-      fetch(`https://student-management-api.vercel.app/present/?studentId=${search.split('=')[1]}`)
+      fetch(`http://localhost:8002/present/?studentId=${search.split('=')[1]}`)
       .then(res=>res.json())
       .then(d=>{setData(d.reverse());console.log(d)})
       

@@ -16,6 +16,8 @@ export default function Students({searched, setSearched,group, setGroup,classNam
     const [loading, setLoading] = useState(false)
     const [showMessage, setShowMessage] = useState('')
     const [showCreateForm, setShowCreateForm] = useState(false)
+
+    const [datalists, setDatalists] = useState({})
  
   
     const [roll, setRoll] = useState()
@@ -26,6 +28,13 @@ export default function Students({searched, setSearched,group, setGroup,classNam
     const [showDeletePopup, setShowDeletePopup] = useState(false)
     const [showUpdateForm, setShowUpdateForm] = useState(false)  
     const [updateFields, setUpdateFields] = useState([])
+
+    useEffect(() => {
+      fetch('http://localhost:8002/getDatalists')
+      .then(res=>res.json())
+      .then(data=>setDatalists(data))
+    }, [])
+    
 
 
     const activeUpdate=(id)=>{
@@ -111,7 +120,7 @@ export default function Students({searched, setSearched,group, setGroup,classNam
         console.log(fetchquery)
         
 
-        fetch(`https://student-management-api.vercel.app/student/?${fetchquery}`)
+        fetch(`http://localhost:8002/student/?${fetchquery}`)
         .then(res=>res.json())
         .then(data=>{setSearched(data.reverse());setLoading(false)})
 
@@ -171,7 +180,7 @@ export default function Students({searched, setSearched,group, setGroup,classNam
            
             
           };
-          fetch("https://student-management-api.vercel.app/student", {
+          fetch("http://localhost:8002/student", {
             headers:{Authorization : localStorage.getItem('tttt'),"Content-Type": "application/json" },
             method: "post",
         
@@ -208,7 +217,7 @@ export default function Students({searched, setSearched,group, setGroup,classNam
            
             
           };
-          fetch(`https://student-management-api.vercel.app/student/${updateId._id}`, {
+          fetch(`http://localhost:8002/student/${updateId._id}`, {
             headers:{Authorization : localStorage.getItem('tttt'),"Content-Type": "application/json" },
             method: "put",
         
@@ -235,7 +244,7 @@ export default function Students({searched, setSearched,group, setGroup,classNam
       const handleDelete = ()=>{
         setLoading(true)
 
-        fetch(`https://student-management-api.vercel.app/student/${deleteid._id}`, {
+        fetch(`http://localhost:8002/student/${deleteid._id}`, {
             headers:{Authorization : localStorage.getItem('tttt'),"Content-Type": "application/json" },
             method: "delete",
         
@@ -261,9 +270,16 @@ export default function Students({searched, setSearched,group, setGroup,classNam
             Students
 
         </div>
+        <div className="example">
+        For testing search with <strong>class : 10</strong>  and <strong>group : science</strong>
+      </div>
         <form className='searchContainer' onSubmit={handleSearch}>
             <input defaultValue={className? className : ''} onChange={e=>setClassName(e.target.value)} required type="number" placeholder='class'/>
-            <input defaultValue={group} onChange={e=>setGroup(e.target.value)} type="text" placeholder='group'/>
+            <input list='group' defaultValue={group} onChange={e=>setGroup(e.target.value)} type="text" placeholder='group'/>
+              <datalist id='group'>
+                {datalists.groups?.map(elm=><option value={elm}>{elm}</option>)}
+
+              </datalist>
             <input onChange={e=>setRoll(e.target.value)} type="text" placeholder='roll'/>
             <input onChange={e=>setphone(e.target.value)} type="text" placeholder='phone'/>
             <input type="submit" className='btn' value={'Search'}/>

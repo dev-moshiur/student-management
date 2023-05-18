@@ -1,6 +1,7 @@
 import React from "react";
 import ClearIcon from "@mui/icons-material/Clear";
 import "./create.scss";
+import '../update/update.scss'
 
 export default function Update({
   inputs,

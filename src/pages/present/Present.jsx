@@ -17,13 +17,21 @@ export default function Present() {
     const [searched, setSearched] = useState([])
     const [chekPreent, setChekPreent] = useState(false)
 
+    const [datalists, setDatalists] = useState({})
+
+    useEffect(() => {
+      fetch('http://localhost:8002/getDatalists')
+      .then(res=>res.json())
+      .then(data=>setDatalists(data))
+    }, [])
+
     
 
 
     const handlePost = ()=>{
       setLoading(true)
       // present
-      fetch("https://student-management-api.vercel.app/present", {
+      fetch("http://localhost:8002/present", {
             headers:{Authorization : localStorage.getItem('tttt'),"Content-Type": "application/json" },
             method: "post",
         
@@ -66,7 +74,7 @@ export default function Present() {
 
 
         // check
-        fetch(`https://student-management-api.vercel.app/present/check/?${fetchquery}`)
+        fetch(`http://localhost:8002/present/check/?${fetchquery}`)
         .then(res=>res.json())
         .then(data=>{
           setChekPreent(data.isPresented)
@@ -76,7 +84,7 @@ export default function Present() {
         
         
 
-        fetch(`https://student-management-api.vercel.app/student/?${fetchNew}`)
+        fetch(`http://localhost:8002/student/?${fetchNew}`)
         .then(res=>res.json())
         .then(data=>{
           const temp = []
@@ -110,9 +118,16 @@ export default function Present() {
       <div className="header">
         Name Present
       </div>
+      <div className="example">
+        For testing search with <strong>class : 10</strong>  and <strong>group : science</strong> 
+      </div>
       <form action="" className='searchContainer' onSubmit={handleSearch}>
       <input onChange={e=>setClassName(e.target.value)} required type="number" placeholder='class'/>
-      <input onChange={e=>setGroup(e.target.value)} type="text" placeholder='group'/>
+      <input list='group' defaultValue={group} onChange={e=>setGroup(e.target.value)} type="text" placeholder='group'/>
+              <datalist id='group'>
+                {datalists.groups?.map(elm=><option value={elm}>{elm}</option>)}
+
+              </datalist>
         {/* <input type="text" name="date" placeholder='Date [dd-mm-yyyy]' id="" /> */}
         <input type="submit" value="search" className='btn' />
       </form>
