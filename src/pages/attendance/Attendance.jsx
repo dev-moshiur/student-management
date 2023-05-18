@@ -20,7 +20,7 @@ export default function Present() {
     const [datalists, setDatalists] = useState({})
 
     useEffect(() => {
-      fetch('http://localhost:8002/getDatalists')
+      fetch('https://student-management-api.vercel.app/getDatalists')
       .then(res=>res.json())
       .then(data=>setDatalists(data))
     }, [])
@@ -38,7 +38,7 @@ export default function Present() {
         }
         fetchquery+=`&date=${new Date(date).toDateString()}`
 
-        fetch(`http://localhost:8002/present/?${fetchquery}`)
+        fetch(`https://student-management-api.vercel.app/present/?${fetchquery}`)
         .then(res=>res.json())
         .then(data=>{
           setSearched(data.reverse());
@@ -49,7 +49,7 @@ export default function Present() {
     const handleDelete = ()=>{
         setLoading(true)
 
-        fetch(`http://localhost:8002/present`, {
+        fetch(`https://student-management-api.vercel.app/present`, {
             headers:{Authorization : localStorage.getItem('tttt'),"Content-Type": "application/json" },
             method: "delete",
             body:JSON.stringify(searched.map(elm=>elm._id))

@@ -20,7 +20,7 @@ export default function Present() {
     const [datalists, setDatalists] = useState({})
 
     useEffect(() => {
-      fetch('http://localhost:8002/getDatalists')
+      fetch('https://student-management-api.vercel.app/getDatalists')
       .then(res=>res.json())
       .then(data=>setDatalists(data))
     }, [])
@@ -31,7 +31,7 @@ export default function Present() {
     const handlePost = ()=>{
       setLoading(true)
       // present
-      fetch("http://localhost:8002/present", {
+      fetch("https://student-management-api.vercel.app/present", {
             headers:{Authorization : localStorage.getItem('tttt'),"Content-Type": "application/json" },
             method: "post",
         
@@ -74,7 +74,7 @@ export default function Present() {
 
 
         // check
-        fetch(`http://localhost:8002/present/check/?${fetchquery}`)
+        fetch(`https://student-management-api.vercel.app/present/check/?${fetchquery}`)
         .then(res=>res.json())
         .then(data=>{
           setChekPreent(data.isPresented)
@@ -84,7 +84,7 @@ export default function Present() {
         
         
 
-        fetch(`http://localhost:8002/student/?${fetchNew}`)
+        fetch(`https://student-management-api.vercel.app/student/?${fetchNew}`)
         .then(res=>res.json())
         .then(data=>{
           const temp = []

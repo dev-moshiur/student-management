@@ -30,7 +30,7 @@ export default function Students({searched, setSearched,group, setGroup,classNam
     const [updateFields, setUpdateFields] = useState([])
 
     useEffect(() => {
-      fetch('http://localhost:8002/getDatalists')
+      fetch('https://student-management-api.vercel.app/getDatalists')
       .then(res=>res.json())
       .then(data=>setDatalists(data))
     }, [])
@@ -120,7 +120,7 @@ export default function Students({searched, setSearched,group, setGroup,classNam
         console.log(fetchquery)
         
 
-        fetch(`http://localhost:8002/student/?${fetchquery}`)
+        fetch(`https://student-management-api.vercel.app/student/?${fetchquery}`)
         .then(res=>res.json())
         .then(data=>{setSearched(data.reverse());setLoading(false)})
 
@@ -180,7 +180,7 @@ export default function Students({searched, setSearched,group, setGroup,classNam
            
             
           };
-          fetch("http://localhost:8002/student", {
+          fetch("https://student-management-api.vercel.app/student", {
             headers:{Authorization : localStorage.getItem('tttt'),"Content-Type": "application/json" },
             method: "post",
         
@@ -217,7 +217,7 @@ export default function Students({searched, setSearched,group, setGroup,classNam
            
             
           };
-          fetch(`http://localhost:8002/student/${updateId._id}`, {
+          fetch(`https://student-management-api.vercel.app/student/${updateId._id}`, {
             headers:{Authorization : localStorage.getItem('tttt'),"Content-Type": "application/json" },
             method: "put",
         
@@ -244,7 +244,7 @@ export default function Students({searched, setSearched,group, setGroup,classNam
       const handleDelete = ()=>{
         setLoading(true)
 
-        fetch(`http://localhost:8002/student/${deleteid._id}`, {
+        fetch(`https://student-management-api.vercel.app/student/${deleteid._id}`, {
             headers:{Authorization : localStorage.getItem('tttt'),"Content-Type": "application/json" },
             method: "delete",
         
